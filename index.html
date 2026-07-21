@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الرقم القياسي لأسعار العقارات – الربع الأول 2026</title>
+  <style>
+    :root{
+      --green:#1b8354;--green-dark:#166a45;--green-soft:#eaf5ef;
+      --text:#161616;--muted:#6c737f;--border:#d2d6db;--bg:#f7f8f7;--white:#fff;
+      --radius:12px;--shadow:0 16px 40px rgba(22,22,22,.12)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:112px}
+    body{margin:0;font-family:"IBM Plex Sans Arabic","Tahoma",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+    a{color:inherit}
+    .container{width:min(1180px,calc(100% - 32px));margin:auto}
+    .govbar{background:#f1f7f3;border-bottom:1px solid #dce8e1;font-size:14px}
+    .govbar .container{min-height:42px;display:flex;align-items:center;gap:10px}
+    .flag{width:18px;height:12px;background:var(--green);border-radius:2px;display:inline-block}
+    .site-header{background:#fff;border-bottom:1px solid var(--border)}
+    .site-header .container{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--green)}
+    .brand-mark{width:44px;height:44px;border-radius:50%;background:var(--green-soft);display:grid;place-items:center;color:var(--green);font-size:22px}
+    .crumbs{font-size:14px;color:var(--muted);padding:22px 0 10px}
+    .hero{padding:18px 0 28px}
+    .hero h1{font-size:clamp(28px,4vw,46px);line-height:1.25;margin:0 0 12px}
+    .hero p{margin:0;color:var(--muted);font-size:18px}
+
+    .report-nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-block:1px solid var(--border)}
+    .report-nav__inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .report-dropdown{position:relative;min-width:360px}
+    .report-dropdown__button{width:100%;min-height:50px;border:1px solid var(--border);background:#fff;border-radius:10px;padding:10px 16px;font:inherit;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;transition:.2s}
+    .report-dropdown__button:hover,.report-dropdown__button:focus-visible{border-color:var(--green);box-shadow:0 0 0 3px rgba(27,131,84,.12);outline:none}
+    .button-label{display:flex;align-items:center;gap:10px}
+    .menu-icon{width:20px;height:14px;position:relative;display:inline-block;border-block:2px solid var(--green)}
+    .menu-icon:after{content:"";position:absolute;right:0;left:0;top:4px;border-top:2px solid var(--green)}
+    .arrow{transition:transform .2s;font-size:14px}
+    .report-dropdown.is-open .arrow{transform:rotate(180deg)}
+    .report-dropdown__menu{position:absolute;top:calc(100% + 8px);right:0;width:100%;padding:8px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);max-height:430px;overflow:auto}
+    .report-dropdown__menu[hidden]{display:none}
+    .report-dropdown__item{display:flex;align-items:center;min-height:46px;padding:10px 14px;text-decoration:none;border-radius:8px;transition:.16s}
+    .report-dropdown__item:hover,.report-dropdown__item:focus-visible{background:var(--green-soft);color:var(--green-dark);outline:none}
+    .report-dropdown__item.is-active{background:var(--green-soft);color:var(--green-dark);font-weight:800}
+    .report-dropdown__item.is-active:before{content:"";width:4px;height:24px;background:var(--green);border-radius:4px;margin-left:10px}
+    .actions{display:flex;gap:8px}
+    .btn{min-height:46px;padding:10px 17px;border-radius:9px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--green)}
+    .btn-primary{background:var(--green);color:#fff}.btn-primary:hover{background:var(--green-dark)}
+    .btn-secondary{background:#fff;color:var(--green-dark)}.btn-secondary:hover{background:var(--green-soft)}
+
+    main{padding:30px 0 70px}
+    .content-grid{display:grid;grid-template-columns:1fr;gap:22px}
+    section{background:#fff;border:1px solid var(--border);border-radius:16px;padding:30px;scroll-margin-top:100px}
+    section h2{margin:0 0 12px;font-size:28px;color:var(--green-dark)}
+    section p{margin:0;color:#4f5863}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+    .kpi{border:1px solid var(--border);border-radius:12px;padding:20px;background:#fbfcfb}
+    .kpi strong{display:block;font-size:30px;color:var(--green);line-height:1.2}
+    .kpi span{color:var(--muted);font-size:14px}
+    .chart{height:220px;margin-top:20px;border-radius:12px;background:linear-gradient(180deg,#f0f7f3,#fff);border:1px dashed #b8c8be;display:flex;align-items:flex-end;gap:14px;padding:22px}
+    .bar{flex:1;background:var(--green);border-radius:8px 8px 0 0;min-height:25px;opacity:.9}
+    footer{background:#123f2c;color:#fff;padding:30px 0;text-align:center}
+
+    @media(max-width:767px){
+      html{scroll-padding-top:92px}.container{width:min(100% - 24px,1180px)}
+      .site-header .container{min-height:64px}.site-header nav{display:none}
+      .report-nav__inner{min-height:68px}.report-dropdown{min-width:0;width:100%}.actions{display:none}
+      .report-dropdown__menu{position:fixed;right:12px;left:12px;bottom:12px;top:auto;width:auto;max-height:68vh;border-radius:16px}
+      .hero{padding-top:10px}.hero h1{font-size:30px}
+      section{padding:22px}.kpis{grid-template-columns:1fr}.chart{height:180px}
+    }
+
+    /* قائمة الإحصاءات: تظهر على الجوال فقط فوق تبويبات النشرة */
+    .mobile-stats-accordion{display:block;background:#fff;border-top:1px solid var(--border)}
+    .publication-tabs{background:#fff;border-block:1px solid var(--border)}
+    .publication-tabs__inner{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 0}
+    .publication-tabs__inner::-webkit-scrollbar{display:none}
+    .publication-tab{flex:0 0 auto;min-height:42px;padding:8px 14px;border:0;border-radius:8px;background:transparent;color:var(--text);font:inherit;font-weight:700;white-space:nowrap;cursor:pointer}
+    .publication-tab:hover,.publication-tab:focus-visible{background:var(--green-soft);color:var(--green-dark);outline:none}
+    .publication-tab.is-active{background:var(--green);color:#fff}
+
+    @media(max-width:767px){
+      .mobile-stats-accordion{display:block;background:#fff;border-top:1px solid var(--border)}
+      .mobile-stats-accordion__inner{width:min(1180px,calc(100% - 32px));margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:14px 0}
+      .mobile-stats-group{position:relative}
+      
+      .mobile-stats-trigger{width:100%;min-height:52px;padding:10px 16px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text);font:inherit;font-size:17px;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:18px;text-align:right;cursor:pointer}
+      .mobile-stats-trigger:focus-visible{outline:3px solid rgba(27,131,84,.18);outline-offset:-3px}
+      .mobile-stats-arrow{width:12px;height:12px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .2s ease;margin-left:8px;flex:0 0 auto}
+      .mobile-stats-trigger[aria-expanded="true"] .mobile-stats-arrow{transform:rotate(135deg)}
+      .mobile-stats-panel{position:absolute;top:calc(100% + 8px);right:0;left:0;z-index:950;padding:8px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+      .mobile-stats-panel[hidden]{display:none}
+      .mobile-stats-link{display:block;padding:11px 12px;margin:2px 0;border-radius:8px;text-decoration:none;color:#2d343c}
+      .mobile-stats-link:hover,.mobile-stats-link:focus-visible{background:var(--green-soft);color:var(--green-dark);outline:none}
+      .mobile-stats-accordion__inner{width:min(100% - 24px,1180px);display:block;padding:0}.mobile-stats-group{border-bottom:1px solid var(--border)}.mobile-stats-trigger{min-height:68px;padding:14px 0;border:0;border-radius:0;font-size:20px}.mobile-stats-panel{position:static;padding:0 0 12px;border:0;border-radius:0;box-shadow:none}
+      .publication-tabs{position:sticky;top:0;z-index:900}
+      .publication-tabs__inner{width:min(100% - 24px,1180px);margin:auto;padding:8px 0}
+    }
+  </style>
+</head>
+<body>
+  <div class="govbar"><div class="container"><span class="flag"></span> موقع حكومي رسمي تابع لحكومة المملكة العربية السعودية</div></div>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand"><span class="brand-mark">إ</span><span>الهيئة العامة للإحصاء</span></div>
+      <nav aria-label="التنقل الرئيسي"><a href="#">الرئيسية</a> &nbsp; <a href="#">الخدمات</a> &nbsp; <a href="#">عن الهيئة</a></nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="crumbs">الرئيسية / الإحصاءات / الرقم القياسي لأسعار العقارات</div>
+    <div class="hero">
+      <h1>الرقم القياسي لأسعار العقارات – الربع الأول 2026</h1>
+      <p>تصور مطور ينقل قائمة الإحصاءات الاقتصادية والاجتماعية والمكانية من الجانب إلى قائمة علوية منسدلة.</p>
+    </div>
+  </div>
+
+  <div class="container report-summary">
+    <div class="report-summary__meta"><span class="badge">إحصاءات اقتصادية</span><span>الأسعار والأرقام القياسية / أسعار العقارات</span></div>
+    <div class="actions"><a class="btn btn-secondary" href="#downloads">تحميل التقرير</a><a class="btn btn-primary" href="#downloads">تحميل البيانات</a></div>
+  </div>
+
+  <div class="mobile-stats-accordion" aria-label="تصنيفات الإحصاءات">
+    <div class="mobile-stats-accordion__inner">
+      <div class="mobile-stats-group">
+        <button class="mobile-stats-trigger" type="button" aria-expanded="false" aria-controls="mobileEconomicPanel">
+          <span>الإحصاءات الاقتصادية</span><span class="mobile-stats-arrow" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-stats-panel" id="mobileEconomicPanel" hidden>
+          <a class="mobile-stats-link" href="#">الحسابات القومية</a>
+          <a class="mobile-stats-link" href="#">الأسعار والأرقام القياسية</a>
+          <a class="mobile-stats-link" href="#">التجارة الدولية</a>
+        </div>
+      </div>
+      <div class="mobile-stats-group">
+        <button class="mobile-stats-trigger" type="button" aria-expanded="false" aria-controls="mobileSocialPanel">
+          <span>الإحصاءات الاجتماعية</span><span class="mobile-stats-arrow" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-stats-panel" id="mobileSocialPanel" hidden>
+          <a class="mobile-stats-link" href="#">السكان والحيوية</a>
+          <a class="mobile-stats-link" href="#">سوق العمل</a>
+          <a class="mobile-stats-link" href="#">التعليم والصحة</a>
+        </div>
+      </div>
+      <div class="mobile-stats-group">
+        <button class="mobile-stats-trigger" type="button" aria-expanded="false" aria-controls="mobileSpatialPanel">
+          <span>الإحصاءات المكانية والموارد</span><span class="mobile-stats-arrow" aria-hidden="true"></span>
+        </button>
+        <div class="mobile-stats-panel" id="mobileSpatialPanel" hidden>
+          <a class="mobile-stats-link" href="#">إحصاءات المناطق</a>
+          <a class="mobile-stats-link" href="#">البيئة والطاقة</a>
+          <a class="mobile-stats-link" href="#">الزراعة والمياه</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="publication-tabs" aria-label="أقسام النشرة">
+    <div class="container publication-tabs__inner">
+      <button class="publication-tab is-active" type="button">تفاصيل النشرة</button>
+      <button class="publication-tab" type="button">المنهجية</button>
+      <button class="publication-tab" type="button">الجداول</button>
+      <button class="publication-tab" type="button">لوحات المعلومات</button>
+      <button class="publication-tab" type="button">الأخبار</button>
+    </div>
+  </nav>
+
+  <main class="container content-grid">
+    <section id="overview"><h2>نظرة عامة</h2><p>ملخص تنفيذي لأبرز تحركات أسعار العقارات خلال الربع الأول من عام 2026.</p><div class="kpis"><div class="kpi"><strong>+2.4%</strong><span>التغير السنوي</span></div><div class="kpi"><strong>+0.8%</strong><span>التغير الربعي</span></div><div class="kpi"><strong>105.6</strong><span>قيمة المؤشر</span></div></div></section>
+    <section id="key-results"><h2>النتائج الرئيسية</h2><p>عرض مبسط لأهم النتائج مع إبراز المؤشرات التي يحتاجها المستخدم بسرعة.</p></section>
+    <section id="general-index"><h2>الرقم القياسي العام</h2><p>تطور الرقم القياسي العام لأسعار العقارات عبر الفترات الزمنية.</p><div class="chart"><div class="bar" style="height:42%"></div><div class="bar" style="height:58%"></div><div class="bar" style="height:53%"></div><div class="bar" style="height:71%"></div><div class="bar" style="height:82%"></div><div class="bar" style="height:92%"></div></div></section>
+    <section id="residential-sector"><h2>القطاع السكني</h2><p>تفاصيل أسعار الأراضي والفلل والشقق والمنازل ضمن القطاع السكني.</p></section>
+    <section id="commercial-sector"><h2>القطاع التجاري</h2><p>مؤشرات العقارات التجارية وتغيراتها الربعية والسنوية.</p></section>
+    <section id="agricultural-sector"><h2>القطاع الزراعي</h2><p>عرض تغيرات أسعار الأراضي الزراعية ومساهمتها في المؤشر.</p></section>
+    <section id="quarterly-comparison"><h2>المقارنات الربعية</h2><p>مقارنة مباشرة بين الربع الحالي والأرباع السابقة.</p></section>
+    <section id="methodology"><h2>المنهجية والجودة</h2><p>تعريف بالمفاهيم ومصادر البيانات وأساليب الاحتساب وضوابط الجودة.</p></section>
+    <section id="downloads"><h2>تحميل البيانات</h2><p>روابط التقرير الكامل وملفات البيانات بصيغ PDF وExcel.</p></section>
+  </main>
+
+  <footer>جميع الحقوق محفوظة للهيئة العامة للإحصاء © 2026</footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const triggers = [...document.querySelectorAll('.mobile-stats-trigger')];
+      triggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
+          const panel = document.getElementById(trigger.getAttribute('aria-controls'));
+          const willOpen = trigger.getAttribute('aria-expanded') !== 'true';
+
+          triggers.forEach(function (otherTrigger) {
+            const otherPanel = document.getElementById(otherTrigger.getAttribute('aria-controls'));
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            if (otherPanel) otherPanel.hidden = true;
+          });
+
+          trigger.setAttribute('aria-expanded', String(willOpen));
+          if (panel) panel.hidden = !willOpen;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
